@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: cornflowerblue;
+            color: white;
+        }
+        h1 {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Calculator</h1>
+    <hr>
+    <input type="number" id="fnum" step="any">
+    <select id="opt">
+        <option value="+">Addition</option>
+        <option value="-">Subtraction</option>
+        <option value="*">Multiplication</option>
+        <option value="/">Division</option>
+    </select>
+    <input type="number" id="snum" step="any">
+    <br>
+    <hr>
+    <button onclick="calc()">Calculate</button>
+    <hr>
+    <label for="result">Result:</label>
+    <input type="text" id="result" readonly>
+    
+    <script>
+        function calc() {
+            var opt1 = document.getElementById("fnum").value;
+            var opt = document.getElementById("opt").value;
+            var opt2 = document.getElementById("snum").value;
+
+            if (opt1 === "" || opt2 === "") {
+                alert("Please enter both numbers.");
+                return;
+            }
+
+            opt1 = parseFloat(opt1);
+            opt2 = parseFloat(opt2);
+            var res;
+
+            if (opt === "+") {
+                res = opt1 + opt2;
+            } else if (opt === "-") {
+                res = opt1 - opt2;
+            } else if (opt === "*") {
+                res = opt1 * opt2;
+            } else if (opt === "/") {
+                if (opt2 === 0) {
+                    alert("Division by zero is not allowed.");
+                    return;
+                }
+                res = opt1 / opt2;
+            }
+
+            document.getElementById("result").value = res;
+        }
+    </script>
+    <input type="number">
+</body>
+</html>
